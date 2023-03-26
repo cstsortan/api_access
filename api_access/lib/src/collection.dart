@@ -26,7 +26,7 @@ abstract class Collection<T>
   Query<T> query([Map<String, Object?>? filters]) {
     return Query<T>((b) => b
       ..collection = toBuilder()
-      ..filters = MapBuilder(filters));
+      ..filters = MapBuilder(filters ?? {}));
   }
 
   Future<void> create(T data) {
