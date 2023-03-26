@@ -73,7 +73,7 @@ class DioApiAccess extends IApiAccess {
       [String? recordId]) {
     final data =
         _serializer.deserializeValue<T>(Map<String, dynamic>.from(json));
-    final String id = recordId ?? json['id'];
+    final String id = recordId ?? json['id'].toString();
     final ref = collection<T>(resource).ref(id);
     return Record<T>((b) => b
       ..data = data
