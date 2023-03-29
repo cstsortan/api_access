@@ -1,39 +1,44 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+### api_access
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+api_access is a library for accessing and manipulating data in a remote data source. It provides a type-safe interface for performing CRUD (create, read, update, delete) operations on individual records as well as on collections of records. It also includes methods for monitoring changes to data and for creating new records.
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## Installation
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+To use api_access in your Dart project, add it as a dependency in your pubspec.yaml file:
 
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```yaml
+dependencies:
+  api_access: ^1.0.0
+```
+Then, run flutter pub get or dart pub get to install the package.
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+To use api_access in your project, you can import it like any other library:
 
 ```dart
-const like = 'sample';
+import 'package:api_access/api_access.dart';
 ```
+Then, you can create an instance of the IApiAccess interface to access your remote data source:
 
-## Additional information
+```dart
+final api = MyApiAccess(/* ... */);
+```
+You can use the methods provided by IApiAccess to perform CRUD operations on your data. For example, to retrieve a single record, you can use the getRecord method:
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+```dart
+final ref = RecordReference<MyRecord>(/* ... */);
+final record = await api.getRecord(ref);
+```
+Or, to retrieve a collection of records, you can use the getQuery method:
+
+```dart
+final query = Query<MyRecord>(/* ... */);
+final result = await api.getQuery(query);
+final records = result.data;
+```
+In addition to these basic methods, api_access also provides methods for monitoring changes to data and for creating new records. For more information on how to use these features, consult the API documentation.
+
+API Documentation
+
+For more detailed information on how to use api_access, consult the API documentation. The documentation includes detailed descriptions of each method provided by IApiAccess, as well as examples and usage notes. You can access the API documentation by generating it with dartdoc or by visiting the online documentation site at docs.apiaccess.com.
